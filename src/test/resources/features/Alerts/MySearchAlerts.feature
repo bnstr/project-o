@@ -1,6 +1,6 @@
 @mySearchAlerts
 Feature: My Search Alerts Feature
-	As an  blinq.com site user
+	As a blinq.com site user
 	I want to save my current searches as entries 
 	So that when new items that match these searches are added
 	I receive email alerts

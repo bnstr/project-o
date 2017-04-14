@@ -1,5 +1,14 @@
 package steps;
 
+import static utils.PageFactory.initPage;
+import static utils.PageFactory.openPage;
+import static org.junit.Assert.assertFalse;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.AnyOf.anyOf;
+
+import blinqpages.FurnitureAndDecor;
+import blinqpages.HomePage;
+import blinqpages.LoginPage;
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
@@ -7,29 +16,34 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class SearchAlertsStepDefinition {
+	
+	LoginPage loginPage;
+	HomePage homePage;
+	FurnitureAndDecor furnitureAndDecor;
+	
+	private static final String TEST_USER = System.getProperty("test.user", "provide valid username");
+    private static final String TEST_PASS = System.getProperty("test.pass", "provide valid password");
     
 	@Given("^I am a new user on blinq\\.com site$")
 	public void i_am_a_new_user_on_blinq_com_site() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		homePage = openPage(HomePage.class);
 	}
 
 	@When("^I perform a search for product \"([^\"]*)\"$")
 	public void i_perform_a_search_for_product(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		homePage.search(arg1);
 	}
 
 	@Then("^The CREATE ALLERT button is not available$")
 	public void the_CREATE_ALLERT_button_is_not_available() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		assertFalse(homePage.isCreateAlertButtonDisplayed());
 	}
 
 	@When("^I login using valid credentials$")
 	public void i_login_using_valid_credentials() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		loginPage = openPage(LoginPage.class);
+        loginPage.basicLogin(TEST_USER, TEST_PASS);
+        homePage = initPage(HomePage.class);
 	}
 
 	@Then("^The CREATE ALLERT button is available$")
