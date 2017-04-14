@@ -20,5 +20,11 @@ public class PageFactory {
         return page;
     }
     
+    public static <T extends BasePage> T initPage(Class<T> pageClass) {
+        T page = org.openqa.selenium.support.PageFactory.initElements(getDriver(), pageClass);
+        page.waitForLoad();
+        return page;
+    }
+    
     
 }

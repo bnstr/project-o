@@ -1,5 +1,7 @@
 package steps;
 
+import static utils.PageFactory.openPage;
+import static utils.PageFactory.initPage;
 import static utils.SeleniumDriver.createDriver;
 import static utils.SeleniumDriver.driver;
 import static utils.SeleniumDriver.shutdownDriver;
@@ -14,16 +16,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import blinqpages.BasePage;
-import blinqpages.FurnitureAndDecor;
+import blinqpages.HomePage;
+import blinqpages.LoginPage;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
 
 public class BaseStep {
+	
+	LoginPage loginPage;
+    HomePage homePage;
 
-    FurnitureAndDecor furnitureAndDecor;
-    
+    private static final String TEST_USER = System.getProperty("test.user", "provide valid username");
+    private static final String TEST_PASS = System.getProperty("test.pass", "provide valid password");
     private static final Logger LOGGER = LoggerFactory.getLogger(BasePage.class);
 
     @Before(value = {"~@excludeme"},order = 99)
@@ -31,9 +37,12 @@ public class BaseStep {
         createDriver();
     }
     
-    @Before(value = {"~@excludeme"},order = 100)
+    @Before(value = {"~@excludeme","~@featureX"},order = 100)
     public void login() {
-    	//TODO
+    	loginPage = openPage(LoginPage.class);
+        loginPage.basicLogin(TEST_USER, TEST_PASS);
+        LOGGER.info("Login with user:"+TEST_USER);
+        homePage = initPage(HomePage.class);
     }
     
     @After(value = {"~@excludeme"},order = 1)
