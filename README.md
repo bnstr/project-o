@@ -1,32 +1,20 @@
-# JDK   Java8
+#### Required JDK   Java8
 
-# Dependencies
-
-
-## Install Dependencies
+#### Install Dependencies
 
 ```bash
 mvn install
 ```
 
-
-# Running all tests
+#### Running all tests
 
 ```bash
 mvn test 
 ```
 
-# Run tests based on TAG 
+#### Run tests based on TAG 
 ```bash
-mvn test -Dcucumber.options="--tags @featureX" -Dtest.env='https://www.blinq.com' -Dtest.user='your_user'  -Dtest.pass='pass'
+mvn test -Dcucumber.options="--tags @base" -Dtest.env='https://www.blinq.com' -Dtest.user='your_user'  -Dtest.pass='pass' -Dwebdriver.chrome.driver=src/test/resources/drivers/chromedriver_mac64 
 ```
-
-# Running with Chrome
-
-
-```bash
-mvn test -Dcucumber.options="--tags @featureX" -Dwebdriver.chrome.driver=src/test/resources/drivers/chromedriver_mac64 
-
-
 
 

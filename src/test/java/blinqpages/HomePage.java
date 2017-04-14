@@ -13,6 +13,9 @@ public class HomePage extends BasePage {
 
 	@FindBy(id = "site-content")
 	WebElement siteContent;
+	
+	@FindBy(id = "homepage-how-blinq-works")
+	WebElement homepageBlinq;
 
 	@FindBy(id = "featured-anchor")
 	WebElement featuredAnchor;
@@ -26,12 +29,16 @@ public class HomePage extends BasePage {
 	@FindBy(css = "[id='searchForm'] button[type='submit']")
 	WebElement searchSubmit;
 	
+	@FindBy(css = ".results-text")
+	WebElement results;
+	
 	@FindBy(id = "saved-search-btn")
 	List<WebElement> createAlert;
 
 	protected ExpectedCondition getPageLoadCondition() {
-		return ExpectedConditions.and(ExpectedConditions.visibilityOf(siteContent), ExpectedConditions
-				.textToBe(By.cssSelector("[id='homepage-how-blinq-works'] .how-we-do-it"), "Here's how we do it!"));
+		return ExpectedConditions.and(
+				ExpectedConditions.visibilityOf(siteContent), 
+				ExpectedConditions.visibilityOf(homepageBlinq));
 	}
 
 	@Override
@@ -53,9 +60,10 @@ public class HomePage extends BasePage {
 		searchInput.clear();
 		searchInput.sendKeys(arg1);
 		searchSubmit.click();
+		waitForWebElement(results);
 	}
 	
-	public boolean isCreateAlertButtonDisplayed() {
+	public boolean createAlertButtonNotDisplayed() {
 		return createAlert.isEmpty();
 	}
 }

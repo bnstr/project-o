@@ -37,7 +37,7 @@ public class BaseStep {
         createDriver();
     }
     
-    @Before(value = {"~@excludeme","~@featureX"},order = 100)
+    @Before(value = {"~@excludeme","~@base"},order = 100)
     public void login() {
     	loginPage = openPage(LoginPage.class);
         loginPage.basicLogin(TEST_USER, TEST_PASS);

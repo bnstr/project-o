@@ -2,6 +2,7 @@ package steps;
 
 import static utils.PageFactory.initPage;
 import static utils.PageFactory.openPage;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.AnyOf.anyOf;
@@ -36,7 +37,7 @@ public class SearchAlertsStepDefinition {
 
 	@Then("^The CREATE ALLERT button is not available$")
 	public void the_CREATE_ALLERT_button_is_not_available() throws Throwable {
-		assertFalse(homePage.isCreateAlertButtonDisplayed());
+		assertTrue(homePage.createAlertButtonNotDisplayed());
 	}
 
 	@When("^I login using valid credentials$")
@@ -46,20 +47,25 @@ public class SearchAlertsStepDefinition {
         homePage = initPage(HomePage.class);
 	}
 
-	@Then("^The CREATE ALLERT button is available$")
-	public void the_CREATE_ALLERT_button_is_available() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	@Then("^The CREATE ALERT button is available$")
+	public void the_CREATE_ALERT_button_is_available() throws Throwable {
+		assertFalse(homePage.createAlertButtonNotDisplayed());
 	}
-
-	@Then("^Clicking it will display the Create New Search Alert modal for \"([^\"]*)\"$")
-	public void clicking_it_will_display_the_Create_New_Search_Alert_modal_for(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
-	}
-
+	
 	@When("^Create New Search Alert workflow is launched$")
 	public void create_New_Search_Alert_workflow_is_launched() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^User is asked to perform loging workflow in order to continue$")
+	public void user_is_asked_to_loging_when_clicking_continue() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^New Alert is saved when clicking continue$")
+	public void new_Alert_is_saved_when_clicking_continue() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
@@ -85,6 +91,12 @@ public class SearchAlertsStepDefinition {
 	    throw new PendingException();
 	}
 
+	@Then("^Manage My Search Alerts page contains \"([^\"]*)\" in saved-search-list$")
+	public void manage_My_Search_Alerts_page_contains_in_saved_search_list(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
 	@Then("^User can cancel the Create New Search Alert$")
 	public void user_can_cancel_the_Create_New_Search_Alert() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
@@ -93,12 +105,6 @@ public class SearchAlertsStepDefinition {
 
 	@Then("^Return to previous state$")
 	public void return_to_previous_state() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
-	}
-
-	@Given("^Manage My Search Alerts page contains \"([^\"]*)\" in saved-search-list$")
-	public void manage_My_Search_Alerts_page_contains_in_saved_search_list(String arg1) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
@@ -183,4 +189,6 @@ public class SearchAlertsStepDefinition {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
+
+	
 }

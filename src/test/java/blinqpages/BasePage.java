@@ -24,7 +24,6 @@ public abstract class BasePage {
     private static final int REFRESH_RATE = 2;
     public static String BASE_URL = System.getProperty("test.env", "https://www.blinq.com");
 
-
     {
         initBaseURL();
     }
